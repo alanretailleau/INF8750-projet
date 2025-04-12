@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+Avant chaque prompt, lire le ficher [task.md](mdc:task.md) pour savoir où on en est.
+
+Après chaque prompt, mettre à jour le fichier [task.md](mdc:task.md) pour savoir où on en est.
+
+- You can @ files here
+- You can use markdown but dont have to

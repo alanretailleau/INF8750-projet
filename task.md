@@ -13,6 +13,7 @@
 - [x] Configuration du projet GCP (`inf8750-456601`)
 - [x] Activation des APIs nécessaires (Cloud Run, Cloud Build, Private CA)
 - [x] Création du CA Pool dans la région `northamerica-northeast1`
+- [x] Création et activation de l'autorité de certification racine `auth-ca` dans le pool
 - [x] Création et configuration du compte de service avec les permissions nécessaires
 - [x] Génération des credentials du compte de service
 
@@ -30,6 +31,7 @@
 - [x] Mettre en place le stockage sécurisé des certificats dans `.certs/`
 - [x] Implémenter la validation des certificats
 - [x] Implémenter les tests unitaires pour la gestion des certificats
+- [x] Ajouter la fonctionnalité de sauvegarde et chargement des certificats
 
 ### Authentification OAuth 2.0
 - [x] Implémenter la classe `OAuthManager` pour la gestion des tokens
@@ -41,6 +43,18 @@
 - [x] Implémenter l'endpoint `/auth/callback` pour gérer le retour OAuth
 - [x] Implémenter la gestion sécurisée des états OAuth avec expiration
 - [x] Écrire les tests unitaires pour les endpoints d'authentification
+
+### Interface Utilisateur
+- [x] Création d'une interface web pour l'authentification
+- [x] Ajout d'une page d'accueil avec bouton de connexion
+- [x] Ajout d'une page de résultat pour afficher le JWT et le certificat
+- [x] Ajout d'une page pour visualiser les requêtes authentifiées
+- [x] Implémentation des styles CSS et scripts JS pour l'UI
+
+### Signature des Requêtes
+- [x] Implémenter le middleware de signature des requêtes sortantes
+- [x] Ajouter une méthode pour effectuer des requêtes signées automatiquement
+- [x] Implémenter un décorateur pour protéger les routes avec authentification
 
 ## 🚧 Problèmes Résolus
 - [x] Correction de l'importation du module Private CA (de `google.cloud.private_ca_v1` à `google.cloud.security.privateca_v1`)
@@ -56,24 +70,27 @@
 - [x] Ajout des dépendances manquantes pour OAuth 2.0
 - [x] Résolution du problème `'dict' object has no attribute 'key_id'` lors de la génération JWT en production
 - [x] Implémentation d'une solution de fallback robuste pour la signature JWT
+- [x] Création et activation d'une autorité de certification racine dans le CA Pool
+- [x] Optimisation du script de déploiement pour gérer les sessions persistantes
+- [x] Implémentation de l'affinité de session sur Cloud Run
 
 ## 📝 Tâches Restantes
 
 ### Déploiement
 - [x] Déploiement de la nouvelle version sur Cloud Run avec les corrections des clés privées
-- [ ] Validation du service en production
+- [x] Validation du service en production
 
 ### Authentification OAuth 2.0
 - [x] Configurer les credentials OAuth dans GCP
-- [ ] Tester le flux d'authentification en production
+- [x] Tester le flux d'authentification en production
 
 ### Gestion des Certificats X.509
-- [ ] Implémenter l'endpoint de demande de certificat X.509
+- [x] Implémenter l'endpoint de demande de certificat X.509
 - [ ] Implémenter le renouvellement automatique des certificats
 - [ ] Configurer la révocation des certificats via IAM
 
 ### Signature des Requêtes
-- [ ] Implémenter le middleware de signature des requêtes sortantes
+- [x] Implémenter le middleware de signature des requêtes sortantes
 - [ ] Mettre en place la rotation automatique des certificats expirés
 
 ### Tests et Documentation
@@ -86,7 +103,7 @@
 - [ ] Documenter les procédures de sécurité et de maintenance
 
 ### Monitoring et Logging
-- [ ] Configurer le logging des opérations critiques
+- [x] Configurer le logging des opérations critiques
 - [ ] Mettre en place le monitoring des certificats
 - [ ] Configurer les alertes pour les événements importants
 - [ ] Implémenter des métriques de performance
@@ -104,9 +121,14 @@
 - Les états OAuth sont nettoyés automatiquement après expiration
 - Les callbacks OAuth sont validés avec un état unique et temporaire
 - Fallback sécurisé pour la génération JWT en cas d'échec de la méthode principale
+- Sessions persistantes avec clé secrète sécurisée pour Cloud Run
+- L'affinité de session est activée pour maintenir les sessions utilisateur
 
 ## 🔄 Prochaines Étapes
-1. Valider le flux d'authentification JWT en production
-2. Tester le flux OAuth complet en production
-3. Développer l'endpoint de demande de certificat
-4. Mettre en place le renouvellement automatique des certificats 
+1. ✅ Valider le flux d'authentification JWT en production
+2. ✅ Tester le flux OAuth complet en production
+3. ✅ Développer l'interface utilisateur conviviale
+4. ✅ Implémenter la signature automatique des requêtes
+5. 🔄 Mettre en place le renouvellement automatique des certificats
+6. 🔄 Implémenter la rotation des certificats expirés
+7. 🔄 Déployer la documentation complète de l'API 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification réussie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="text-center">Authentification réussie !</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success">
+                            <h4 class="alert-heading">Félicitations !</h4>
+                            <p>Vous avez été authentifié avec succès via Google OAuth 2.0. Un JWT et un certificat X.509 ont été générés pour vous.</p>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header bg-primary text-white">
+                                        <h5>JWT Token <button class="btn btn-sm btn-light float-end btn-copy" data-copy="{{ jwt }}">Copier</button></h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <pre class="mb-0"><code>{{ jwt }}</code></pre>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Expire dans: {{ expires_in | round }} secondes</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header bg-info text-white">
+                                        <h5>Informations sur le certificat</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Créé le :</strong> {{ certificate.create_time }}</li>
+                                            <li class="list-group-item"><strong>Expire le :</strong> {{ certificate.expire_time or 'Non défini' }}</li>
+                                            <li class="list-group-item"><strong>Nom :</strong> {{ certificate.name or 'temp-cert' }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header bg-secondary text-white">
+                                <h5>Certificat X.509 <button class="btn btn-sm btn-light float-end btn-copy" data-copy="{{ certificate.pem_certificate }}">Copier</button></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="certificate-box">{{ certificate.pem_certificate }}</div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ url_for('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+                            <a href="{{ url_for('cert_auth_request') }}" class="btn btn-success">Faire une requête authentifiée</a>
+                            <a href="{{ url_for('hello') }}" class="btn btn-warning">Accéder à l'API protégée</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 

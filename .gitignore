@@ -1,0 +1,37 @@
+# Environnement virtuel
+venv/
+env/
+.env
+
+# Certificats et clés
+.certs/
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+
+# Fichiers de configuration
+config.json
+credentials.json
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Système
+.DS_Store
+Thumbs.db 

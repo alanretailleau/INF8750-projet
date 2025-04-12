@@ -1,0 +1,59 @@
+/* CSS personnalisé pour l'application d'authentification */
+
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #4285F4;
+    border-color: #4285F4;
+}
+
+.btn-primary:hover {
+    background-color: #2b6dd2;
+    border-color: #2b6dd2;
+}
+
+.alert-success {
+    background-color: #e6f4ea;
+    border-color: #c6e7c6;
+    color: #155724;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.certificate-box {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    overflow-x: auto;
+    max-height: 300px;
+}
+
+/* Animation pour le bouton d'authentification */
+.btn-lg {
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-lg:hover {
+    transform: scale(1.05);
+} 

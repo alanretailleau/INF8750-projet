@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service d'authentification hybride</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center">Service d'authentification hybride</h2>
+                    </div>
+                    <div class="card-body">
+                        <h3>Bienvenue dans le service d'authentification</h3>
+                        <p>Ce service vous permet de :</p>
+                        <ul>
+                            <li>Vous authentifier via Google OAuth 2.0</li>
+                            <li>Obtenir un jeton JWT signé valide pour authentifier vos requêtes</li>
+                            <li>Recevoir un certificat X.509 pour signer vos communications</li>
+                        </ul>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="{{ url_for('init_auth') }}" class="btn btn-primary btn-lg">
+                                <i class="bi bi-google me-2"></i>Se connecter avec Google
+                            </a>
+                        </div>
+
+                        {% if session.get('certificate') %}
+                        <hr>
+                        <div class="alert alert-success mt-4">
+                            <h4 class="alert-heading">Vous êtes authentifié !</h4>
+                            <p>Un certificat et un jeton JWT ont été générés pour vous.</p>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="{{ url_for('status') }}" class="btn btn-info">Vérifier le statut</a>
+                                <a href="{{ url_for('cert_auth_request') }}" class="btn btn-success">Faire une requête authentifiée</a>
+                                <a href="{{ url_for('hello') }}" class="btn btn-warning">Accéder à l'API protégée</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
